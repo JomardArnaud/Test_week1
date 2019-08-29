@@ -1,7 +1,23 @@
 const ctrl = module.exports;
+var mysql = require('mysql');
 
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "oppai8", //je suis pas sur de vouloir push ça xD
+  database: "MySQL80"
+});
+
+con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM users", function (err, result, fields) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
 
 ctrl.login = function(request) {
+    con.connect();
     compareLoginStuff(request.login, request.password);
 }
 
