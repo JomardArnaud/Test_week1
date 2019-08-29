@@ -1,0 +1,23 @@
+{
+  "name": "test_week1",
+  "version": "1.0.0",
+  "description": "some test on node/express/mariaDB",
+  "main": "connection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JomardArnaud/Test_week1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JomardArnaud/Test_week1/issues"
+  },
+  "homepage": "https://github.com/JomardArnaud/Test_week1#readme",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}
