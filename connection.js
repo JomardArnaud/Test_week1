@@ -9,17 +9,31 @@ var con = mysql.createConnection({
   port: "3308"
 });
 
+/*
+à remettre après dans le server.js
+app.get('/login', function (req, res) {
+  connection.login(req.query)
+})
+
+app.get ('/addUser', function(req, res) {
+  connection.addUser(req.query)
+})
+
+app.get('/changePassword', function(req, res) {
+  connection.changePassword(req.query)
+}) */
+
 ctrl.login = function(request) {
     con.query("SELECT * FROM users", function (err, result, fields) {
         if (err) throw err;
-        for(let i=0; i < result.length;i++) {
-            if (request.Login == result[i].Login) {
-                if (request.Password == result[i].Password) {
+        result.forEach(element => {
+            if (request.Login == element.Login) {
+                if (request.Password == element.Password) {
                     console.log("connection sucess");
                     return (0);
                 }
             }
-        }
+        });
         console.log("login or password might be wrong");
         return (-1);
     });

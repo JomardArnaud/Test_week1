@@ -1,19 +1,21 @@
 const express = require('express')
 const app = express()
-const connection = require("./connection")
+const mysql = require('mysql')
+const bdd = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "oppai8",
+  database: "real_test",
+  port: "3308"
+});
+const route = require("./route")(app, bdd)
 
-app.get('/login', function (req, res) {
-  connection.login(req.query)
-})
+//ITEM PART
+/*  req.filter to set the field for research, exemple if you want find item by name req.filter = "name"
+    req.where to set value for the field exemple if you want the item of john req.where = "John"
+    the result of request will be store on res.item
+*/
 
-app.get ('/addUser', function(req, res) {
-  connection.addUser(req.query)
-})
-
-app.get('/changePassword', function(req, res) {
-  connection.changePassword(req.query)
-})
-
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log('Example app listening on port 3000!')
 })
